@@ -1,0 +1,78 @@
+.stars-background {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.star {
+  position: absolute;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
+  animation: twinkle ease-in-out infinite;
+}
+
+@keyframes twinkle {
+  0% { opacity: 0.4; }
+  20% { opacity: 0.9; }
+  40% { opacity: 0.5; }
+  60% { opacity: 0.95; }
+  80% { opacity: 0.45; }
+  100% { opacity: 0.4; }
+}
+
+.falling-star {
+  position: absolute;
+  top: -20px;
+  width: 120px;
+  height: 2px;
+  transform: rotate(-45deg);
+  transform-origin: left center;
+  animation: fallingStar 1.5s ease-out forwards;
+  pointer-events: none;
+}
+
+.falling-star-head {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: 4px;
+  height: 4px;
+  background: #fff;
+  border-radius: 50%;
+  transform: translateY(-50%);
+  box-shadow: 0 0 10px #fff, 0 0 20px rgba(255, 255, 255, 0.6);
+}
+
+.falling-star-tail {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  right: 20px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.9));
+  transform: translateY(-50%);
+}
+
+
+@keyframes fallingStar {
+  0% {
+    opacity: 0;
+    transform: rotate(-45deg) translateX(0) translateY(0);
+  }
+  10% {
+    opacity: 1;
+    transform: rotate(-45deg) translateX(0) translateY(0);
+  }
+  90% {
+    opacity: 0.8;
+    transform: rotate(-45deg) translateX(300px) translateY(300px);
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(-45deg) translateX(350px) translateY(350px);
+  }
+}
+

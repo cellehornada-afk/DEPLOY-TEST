@@ -1,0 +1,144 @@
+/* THEME: New palette (Navy/Deep Blue + Pearl White/Powder + Light Wood)
+   REVERT: Uncomment the :root block below and comment out the active :root block */
+:root {
+  /* NEW PALETTE (Pearl White, Misty Grey, Powder, Light Wood, Deep Blue, Navy) */
+  --color-primary: #243F5D;
+  --color-primary-light: #254E7B;
+  --color-cream: #FAFAFA;
+  --color-gold: #E3D4C7;
+  --color-gold-light: #F1E6DC;
+  --color-text: #e8f0e8;
+  --color-text-muted: rgba(255, 255, 255, 0.7);
+  --bg-dark: #0a0f14;
+  --bg-green: #162536;
+  --glass-bg: rgba(255, 255, 255, 0.08);
+  --glass-border: rgba(255, 255, 255, 0.35);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37), inset 1px 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+/* REVERT: Restore old palette (dark green + cream + gold)
+:root {
+  --color-primary: #173f24;
+  --color-primary-light: #2a5a3a;
+  --color-cream: #F9F3E7;
+  --color-gold: #DBAB50;
+  --color-gold-light: #e8c67a;
+  --bg-green: #1a2e1a;
+}
+*/
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--color-text);
+  background: 
+    linear-gradient(165deg, var(--bg-dark) 0%, var(--bg-green) 60%, var(--color-primary) 100%);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+a {
+  color: var(--color-gold-light);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--color-gold);
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .container { padding: 0 2rem; }
+}
+
+.layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+
+
+.main-content {
+  flex: 1;
+  padding: 1rem 0;
+  position: relative;
+  z-index: 1;
+}
+
+.loading-screen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  color: var(--color-text-muted);
+}
+
+/* Glass card base - stroke: crisp border + top-left inner glow */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  box-shadow: var(--glass-shadow);
+}
+
+/* Button variants for modals/forms */
+.btn {
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: all 0.2s;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: var(--color-gold);
+  color: var(--bg-dark);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: var(--color-gold-light);
+}
+
+.btn-outline {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--color-text);
+  border: 1px solid var(--glass-border);
+}
+
+.btn-outline:hover {
+  background: rgba(255, 255, 255, 0.15);
+}

@@ -1,0 +1,147 @@
+.tenant-page {
+  padding: 2rem 0 4rem;
+}
+
+.tenant-page h1 {
+  color: var(--color-text);
+  margin-bottom: 1.5rem;
+}
+
+.tenant-maintenance-replies {
+  background: var(--glass-bg);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: var(--glass-shadow);
+}
+
+.tenant-maintenance-replies h3 {
+  color: var(--color-text);
+  margin-bottom: 0.5rem;
+}
+
+.tenant-replies-desc {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.tenant-reply-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+  border-left: 3px solid var(--color-gold);
+}
+
+.tenant-reply-card:last-child {
+  margin-bottom: 0;
+}
+
+.tenant-reply-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.tenant-reply-header strong {
+  color: var(--color-text);
+}
+
+.tenant-reply-status {
+  font-size: 0.75rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+  background: rgba(90, 200, 250, 0.3);
+  color: #5ac8fa;
+}
+
+.tenant-reply-msg {
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+}
+
+.tenant-reply-link {
+  font-size: 0.85rem;
+  color: var(--color-gold-light);
+  text-decoration: none;
+}
+
+.tenant-reply-link:hover {
+  color: var(--color-gold);
+  text-decoration: underline;
+}
+
+.tenant-cards {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .tenant-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.tenant-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid var(--glass-border);
+  padding: 1.5rem;
+  border-radius: 16px;
+  box-shadow: var(--glass-shadow);
+}
+
+.tenant-card h3 {
+  color: var(--color-text);
+  margin-bottom: 0.5rem;
+}
+
+.tenant-card p {
+  color: var(--color-text-muted);
+}
+
+.tenant-card.link-card {
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.tenant-card.link-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.gcash-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.gcash-qr-container {
+  background: #fff;
+  padding: 1rem;
+  border-radius: 12px;
+  margin: 1rem 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.gcash-qr {
+  display: block;
+  width: 180px;
+  height: 180px;
+}
+
+.gcash-note {
+  font-size: 0.85rem;
+  color: var(--color-gold);
+  margin-top: 0;
+}

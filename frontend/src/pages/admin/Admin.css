@@ -1,0 +1,400 @@
+.admin-page {
+  padding: 2rem 0 4rem;
+}
+
+.admin-dashboard-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.admin-dashboard-header h1 {
+  margin: 0;
+}
+
+.admin-notif-wrap {
+  position: relative;
+}
+
+.admin-notif-bell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 0.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-gold);
+  border-radius: 8px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.admin-notif-bell:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--color-gold-light);
+}
+
+.admin-notif-dropdown-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.admin-notif-dropdown-header strong {
+  color: var(--color-text);
+}
+
+.admin-notif-view-all {
+  font-size: 0.85rem;
+  color: var(--color-gold);
+  text-decoration: none;
+}
+
+.admin-notif-view-all:hover {
+  color: var(--color-gold-light);
+  text-decoration: underline;
+}
+
+.admin-notif-item-subject {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--color-gold);
+  margin-bottom: 0.25rem;
+}
+
+.admin-notif-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 0.5rem;
+  min-width: 300px;
+  max-width: 360px;
+  max-height: 320px;
+  overflow-y: auto;
+  background: var(--glass-bg);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  box-shadow: var(--glass-shadow);
+  z-index: 200;
+}
+
+.admin-notif-empty {
+  padding: 1.5rem;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.admin-notif-item {
+  padding: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--color-text);
+}
+
+.admin-notif-item:last-child {
+  border-bottom: none;
+}
+
+.admin-notif-item.unread {
+  background: rgba(219, 171, 80, 0.06);
+}
+
+.admin-notif-item strong {
+  display: block;
+  margin-bottom: 0.35rem;
+}
+
+.admin-notif-item p {
+  margin: 0 0 0.5rem;
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  line-height: 1.4;
+}
+
+.admin-notif-mark {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.8rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--color-text);
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.admin-notif-mark:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.admin-notif-badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background: var(--color-gold);
+  color: var(--bg-dark);
+  font-size: 0.7rem;
+  font-weight: 700;
+  min-width: 20px;
+  height: 20px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.admin-page h1 {
+  color: var(--color-text);
+  margin-bottom: 0.5rem;
+}
+
+.admin-page .welcome {
+  color: var(--color-text-muted);
+  margin-bottom: 2rem;
+}
+
+.admin-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+}
+
+.admin-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid var(--glass-border);
+  padding: 1.5rem;
+  border-radius: 16px;
+  box-shadow: var(--glass-shadow);
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.admin-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.admin-card h3 {
+  color: var(--color-text);
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.admin-card-badge {
+  background: var(--color-gold);
+  color: var(--bg-dark);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.2rem 0.5rem;
+  border-radius: 999px;
+}
+
+.admin-card p {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+.admin-register-prompt {
+  text-align: center;
+  margin-top: 2rem;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+}
+
+.admin-register-prompt a {
+  color: var(--color-gold-light);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.admin-register-prompt a:hover {
+  color: var(--color-gold);
+  text-decoration: underline;
+}
+
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--glass-bg);
+  backdrop-filter: blur(15px);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--glass-shadow);
+}
+
+.admin-table th, .admin-table td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--color-text);
+}
+
+.admin-table th {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.admin-table tr:hover td {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.form-group input, .form-group select, .form-group textarea {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--glass-border);
+  border-radius: 8px;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--color-text);
+}
+
+.form-group select {
+  color-scheme: dark;
+}
+
+.form-group select option {
+  background: var(--bg-dark);
+  color: var(--color-text);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: var(--color-text-muted);
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.modal {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  padding: 2rem;
+  border-radius: 16px;
+  max-width: 500px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: var(--glass-shadow);
+}
+
+.modal h2 {
+  color: var(--color-text);
+  margin-bottom: 1rem;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.badge-success { background: rgba(52, 199, 89, 0.3); color: #5dd879; }
+.badge-warning { background: rgba(255, 204, 0, 0.3); color: #ffcc00; }
+.badge-danger { background: rgba(255, 59, 48, 0.3); color: #ff6b6b; }
+.badge-info { background: rgba(90, 200, 250, 0.3); color: #5ac8fa; }
+
+.btn-sm {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.85rem;
+  border: 1px solid var(--glass-border);
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--color-text);
+  border-radius: 6px;
+  cursor: pointer;
+  margin-right: 0.25rem;
+}
+
+.btn-sm:hover { background: rgba(255, 255, 255, 0.15); }
+.btn-sm.btn-danger { background: rgba(255, 59, 48, 0.3); border-color: rgba(255, 59, 48, 0.5); }
+.table-wrap { overflow-x: auto; }
+
+.stats-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  margin-bottom: 2rem;
+}
+
+.stat-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(15px);
+  border: 1px solid var(--glass-border);
+  padding: 1.5rem;
+  border-radius: 16px;
+  box-shadow: var(--glass-shadow);
+}
+
+.stat-card h3 { font-size: 0.9rem; color: var(--color-text-muted); margin-bottom: 0.5rem; }
+.stat-value { font-size: 1.5rem; font-weight: 700; color: var(--color-gold); }
+.chart-section {
+  background: var(--glass-bg);
+  backdrop-filter: blur(15px);
+  border: 1px solid var(--glass-border);
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: var(--glass-shadow);
+  margin-top: 2rem;
+}
+.chart-section h2 { color: var(--color-text); margin-bottom: 1rem; }
+
+.tenant-admin-reply {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 1rem;
+  border-radius: 8px;
+  color: var(--color-text);
+  white-space: pre-wrap;
+}
+
+.tenant-no-reply {
+  color: var(--color-text-muted);
+  font-style: italic;
+}

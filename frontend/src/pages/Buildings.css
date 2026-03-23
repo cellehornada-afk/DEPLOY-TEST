@@ -1,0 +1,93 @@
+.buildings-page {
+  padding: 2rem 0 4rem;
+}
+
+.buildings-page h1 {
+  color: var(--color-text);
+  margin-bottom: 2rem;
+}
+
+.buildings-error,
+.buildings-empty {
+  color: var(--color-text-muted);
+  font-size: 1.1rem;
+  text-align: center;
+  padding: 2rem;
+}
+
+.buildings-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .buildings-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .buildings-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.building-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--glass-shadow);
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.building-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.building-image {
+  height: 200px;
+  background: rgba(26, 46, 26, 0.5);
+}
+
+.building-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.building-placeholder {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+  color: var(--color-text);
+  font-weight: 600;
+  padding: 1rem;
+  text-align: center;
+}
+
+.building-info {
+  padding: 1.5rem;
+}
+
+.building-info h3 {
+  color: var(--color-text);
+  margin-bottom: 0.5rem;
+}
+
+.building-info .address {
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+}
+
+.building-info .rooms {
+  margin-top: 0.5rem;
+  font-weight: 600;
+  color: var(--color-gold);
+}
