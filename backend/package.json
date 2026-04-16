@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "nodemon src/index.js",
     "start": "node src/index.js",
-    "build": "prisma generate && node src/index.js",
+    "build": "prisma generate",
     "hash-password": "node scripts/hash-password.mjs"
   },
   "dependencies": {
