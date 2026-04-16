@@ -10,13 +10,9 @@ import fs from 'fs';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const router = Router();
 
-const uploadDir = path.join(__dirname, '../../uploads/rooms');
-if (!fs.existsSync(uploadDir)) fs.mkdirSync(uploadDir, { recursive: true });
+// FIX: Switched from diskStorage to memoryStorage for Vercel compatibility
+const storage = multer.memoryStorage();
 
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => cb(null, uploadDir),
-  filename: (req, file, cb) => cb(null, `${Date.now()}-${file.originalname.replace(/[^a-zA-Z0-9.-]/g, '_')}`),
-});
 const upload = multer({
   storage,
   limits: { fileSize: parseInt(process.env.MAX_FILE_SIZE) || 5 * 1024 * 1024 },
@@ -139,32 +135,32 @@ router.put('/:id', authenticate, authorize('ADMIN'), async (req, res) => {
   }
 });
 
-// Admin: Upload room images
+// Admin: Upload room images 
+// NOTE: req.files now contains buffers. You must upload these to a Cloud provider.
 router.post('/:id/images', authenticate, authorize('ADMIN'), upload.array('images', 10), async (req, res) => {
   try {
     const room = await prisma.room.findUnique({ where: { id: req.params.id } });
     if (!room) return res.status(404).json({ error: 'Room not found' });
-    const current = JSON.parse(room.images || '[]');
-    const newPaths = (req.files || []).map(f => `/uploads/rooms/${f.filename}`);
-    const updated = [...current, ...newPaths];
-    await prisma.room.update({
-      where: { id: req.params.id },
-      data: { images: JSON.stringify(updated) },
-    });
-    res.json({ images: updated });
+
+    // Placeholder: On Vercel, you'd send req.files to Cloudinary/S3 here
+    // For now, this logic is kept so it doesn't crash, but won't save local paths
+    res.status(200).json({ message: "Upload received in memory. Connect Cloudinary to save permanently." });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 });
 
 // Admin: Bulk import rooms (CSV)
-const csvUpload = multer({ dest: uploadDir });
-router.post('/bulk-import', authenticate, authorize('ADMIN'), csvUpload.single('file'), async (req, res) => {
+// FIX: Using memory storage for CSV import
+router.post('/bulk-import', authenticate, authorize('ADMIN'), upload.single('file'), async (req, res) => {
   try {
     if (!req.file) return res.status(400).json({ error: 'CSV file required' });
     const { parse } = await import('csv-parse/sync');
-    const content = fs.readFileSync(req.file.path, 'utf-8');
+    
+    // Read from buffer instead of file path
+    const content = req.file.buffer.toString('utf-8');
     const rows = parse(content, { columns: true, skip_empty_lines: true });
+    
     const created = [];
     for (const row of rows) {
       const room = await prisma.room.create({
@@ -180,7 +176,6 @@ router.post('/bulk-import', authenticate, authorize('ADMIN'), csvUpload.single('
       });
       created.push(room);
     }
-    fs.unlinkSync(req.file.path);
     res.json({ message: `Imported ${created.length} rooms`, rooms: created });
   } catch (err) {
     res.status(500).json({ error: err.message });
