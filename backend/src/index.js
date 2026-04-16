@@ -4,8 +4,6 @@ import cors from 'cors';
 import helmet from 'helmet';
 import cookieParser from 'cookie-parser';
 import rateLimit from 'express-rate-limit';
-import path from 'path';
-import { fileURLToPath } from 'url';
 
 import authRoutes from './routes/auth.js';
 import buildingRoutes from './routes/buildings.js';
@@ -20,9 +18,7 @@ import analyticsRoutes from './routes/analytics.js';
 import settingsRoutes from './routes/settings.js';
 import supportChatRoutes from './routes/supportChat.js';
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
-const PORT = process.env.PORT || 3001;
 
 // Security middleware
 app.use(helmet({ crossOriginResourcePolicy: { policy: 'cross-origin' } }));
@@ -33,25 +29,17 @@ app.use(cors({
 
 // Rate limiting
 const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
+  windowMs: 15 * 60 * 1000,
   max: 100,
   message: { error: 'Too many requests, please try again later.' },
 });
 app.use('/api/', limiter);
 
-// Stricter limit for auth
-app.use('/api/auth/login', rateLimit({
-  windowMs: 15 * 60 * 1000,
-  max: 10,
-  message: { error: 'Too many login attempts.' },
-}));
-
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-// Static files (uploads)
-app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
+// REMOVED: Static file serving (fs/path) causing Vercel 500 errors
 
 // API Routes
 app.use('/api/auth', authRoutes);
@@ -66,11 +54,6 @@ app.use('/api/bookings', bookingRoutes);
 app.use('/api/analytics', analyticsRoutes);
 app.use('/api/settings', settingsRoutes);
 app.use('/api/support-chat', supportChatRoutes);
-
-// Root - redirect to frontend
-app.get('/', (req, res) => {
-  res.redirect(process.env.FRONTEND_URL || 'http://localhost:5173');
-});
 
 // Health check
 app.get('/api/health', (req, res) => {
